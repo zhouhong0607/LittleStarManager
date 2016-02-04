@@ -24,28 +24,28 @@ public class MTable extends JTable
 	}
 
 	@Override
-	public JTableHeader getTableHeader() // ¶¨Òå±í¸ñÍ·
+	public JTableHeader getTableHeader() // å®šä¹‰è¡¨æ ¼å¤´
 	{
 		JTableHeader tableHeader = super.getTableHeader();
-		tableHeader.setReorderingAllowed(true);// ÉèÖÃ±í¸ñÁĞ¿ÉÖØÅÅ
+		tableHeader.setReorderingAllowed(true);// è®¾ç½®è¡¨æ ¼åˆ—å¯é‡æ’
 		DefaultTableCellRenderer hr = (DefaultTableCellRenderer) tableHeader
-				.getDefaultRenderer();// »ñµÃ±í¸ñÍ·µ¥Ôª¸ñ¶ÔÏó
-		hr.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);// ÉèÖÃÁĞÃû¾ÓÖĞÏÔÊ¾
+				.getDefaultRenderer();// è·å¾—è¡¨æ ¼å¤´å•å…ƒæ ¼å¯¹è±¡
+		hr.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);// è®¾ç½®åˆ—åå±…ä¸­æ˜¾ç¤º
 		return tableHeader;
 	}
 
 	@Override
-	public TableCellRenderer getDefaultRenderer(Class<?> columnClass)// »ñµÃ±í¸ñµ¥Ôª¸ñ¶ÔÏó
+	public TableCellRenderer getDefaultRenderer(Class<?> columnClass)// è·å¾—è¡¨æ ¼å•å…ƒæ ¼å¯¹è±¡
 	{
 		DefaultTableCellRenderer cr = (DefaultTableCellRenderer) super
-				.getDefaultRenderer(columnClass);// »ñµÃ±í¸ñµÄµ¥Ôª¸ñ¶ÔÏó
-		cr.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);// ÉèÖÃµ¥Ôª¸ñÄÚÈİ¾ÓÖĞÏÔÊ¾
+				.getDefaultRenderer(columnClass);// è·å¾—è¡¨æ ¼çš„å•å…ƒæ ¼å¯¹è±¡
+		cr.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);// è®¾ç½®å•å…ƒæ ¼å†…å®¹å±…ä¸­æ˜¾ç¤º
 
 		return cr;
 	}
 
 	@Override
-	public boolean isCellEditable(int row, int column)// ÉèÖÃ±í¸ñ²»¿É±à¼­
+	public boolean isCellEditable(int row, int column)// è®¾ç½®è¡¨æ ¼ä¸å¯ç¼–è¾‘
 	{
 		return false;
 	}

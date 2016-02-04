@@ -2,8 +2,8 @@ package com;
 
 public class TbUserlist
 {
-	private String name;// Ê¹ÓÃÕßµÄÃû×Ö
-	private String username;// µÇÂ¼Ãû
+	private String name;// ä½¿ç”¨è€…çš„åå­—
+	private String username;// ç™»å½•å
 	private String pass;
 	private String quan;
 

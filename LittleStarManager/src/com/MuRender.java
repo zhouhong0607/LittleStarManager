@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-//ÉèÖÃµ¥Ôª¸ñÑÕÉ«
+//è®¾ç½®å•å…ƒæ ¼é¢œè‰²
 public class MuRender extends DefaultTableCellRenderer
 {
 
@@ -17,21 +17,21 @@ public class MuRender extends DefaultTableCellRenderer
 	{
 		Component renderer = super.getTableCellRendererComponent(table, value,
 				isSelected, hasFocus, row, column);
-		// ÏÈ°ÑËùÓÐµ¥Ôª¸ñÉèÖÃÎª°×É«
+		// å…ˆæŠŠæ‰€æœ‰å•å…ƒæ ¼è®¾ç½®ä¸ºç™½è‰²
 		renderer.setForeground(Color.BLACK);
-		// ½øÐÐäÖÈ¾
-		if (column > 4 && column < 17) // 6~17ÁÐµ¥Ôª¸ñ¸Ä±äÑÕÉ«
+		// è¿›è¡Œæ¸²æŸ“
+		if (column > 4 && column < 17) // 6~17åˆ—å•å…ƒæ ¼æ”¹å˜é¢œè‰²
 		{
-			// È¡µÃµ¥Ôª¸ñµÄÖµ
+			// å–å¾—å•å…ƒæ ¼çš„å€¼
 			String strValue = (String) value;
 
 			switch (strValue)
 			{
-			case "ÒÑ½»":
-				renderer.setForeground(Color.green); // 1ÉèÖÃÎªÂÌÉ«
+			case "å·²äº¤":
+				renderer.setForeground(Color.green); // 1è®¾ç½®ä¸ºç»¿è‰²
 				break;
-			case "Î´½»":
-				renderer.setForeground(Color.red); // 0ÉèÖÃÎªºìÉ«
+			case "æœªäº¤":
+				renderer.setForeground(Color.red); // 0è®¾ç½®ä¸ºçº¢è‰²
 				break;
 			default:
 				break;
@@ -46,7 +46,7 @@ public class MuRender extends DefaultTableCellRenderer
 		return renderer;
 	}
 
-	// ÉèÖÃµ¥Ôª¸ñÑÕÉ«½áÊø*****
+	// è®¾ç½®å•å…ƒæ ¼é¢œè‰²ç»“æŸ*****
 	private String getToday()
 	{
 		String today;

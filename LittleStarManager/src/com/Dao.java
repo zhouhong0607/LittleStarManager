@@ -26,7 +26,7 @@ public class Dao
 			if (conn == null)
 			{
 				Class.forName(dbClassName).newInstance();
-				conn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);// connect×ÊÔ´ÉêÇë£¬¼ÇµÃÊÍ·Å
+				conn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);// connectèµ„æºç”³è¯·ï¼Œè®°å¾—é‡Šæ”¾
 			}
 		} catch (Exception ee)
 		{
@@ -35,12 +35,12 @@ public class Dao
 
 	}
 
-	// ½ûÖ¹Éú³ÉdaoÊµÀı
+	// ç¦æ­¢ç”Ÿæˆdaoå®ä¾‹
 	private Dao()
 	{
 	}
 
-	// ¶ÁÈ¡ÓÃ»§
+	// è¯»å–ç”¨æˆ·
 	public static TbUserlist getUser(String loginname, String password)
 	{
 		TbUserlist user = new TbUserlist();
@@ -65,7 +65,7 @@ public class Dao
 		return user;
 	}
 
-	// ¶ÁÈ¡kidmanagerĞÅÏ¢¸³Öµ¸øÄ£ĞÍ,½«ËùÓĞkidĞÅÏ¢¸³Öµ¸øÏòÁ¿
+	// è¯»å–kidmanagerä¿¡æ¯èµ‹å€¼ç»™æ¨¡å‹,å°†æ‰€æœ‰kidä¿¡æ¯èµ‹å€¼ç»™å‘é‡
 	public static Vector<TbKidmanager> getTbKidmanager()
 	{
 		Vector<TbKidmanager> kidlista = new Vector<>();
@@ -116,7 +116,7 @@ public class Dao
 		{
 			Statement stmt = null;
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);// Ö»¶ÁÄ£Ê½£¬²»¿É¸ü¸Ä½á¹û¼¯
+					ResultSet.CONCUR_READ_ONLY);// åªè¯»æ¨¡å¼ï¼Œä¸å¯æ›´æ”¹ç»“æœé›†
 			rs = stmt.executeQuery(sql);
 		} catch (Exception e)
 		{
@@ -126,13 +126,13 @@ public class Dao
 		return rs;
 	}
 
-	// Í¨¹ıÄ£ĞÍTbKidmanager²åÈëÒ»ÌõĞÂ¼ÇÂ¼,³É¹¦·µ»Øtrue
+	// é€šè¿‡æ¨¡å‹TbKidmanageræ’å…¥ä¸€æ¡æ–°è®°å½•,æˆåŠŸè¿”å›true
 	public static boolean inserttodb(TbKidmanager newkid)
 	{
 		boolean result = false;
 		try
 		{
-			// ²åÈë SQLÓï¾ä
+			// æ’å…¥ SQLè¯­å¥
 			String sql = "insert tb_kidmanager values('" + newkid.getid()
 					+ "','" + newkid.getkidname() + "','" + newkid.getindate()
 					+ "','" + newkid.getbirdate() + "','" + newkid.getphone()
@@ -142,14 +142,14 @@ public class Dao
 					+ newkid.getJul() + "','" + newkid.getAug() + "','"
 					+ newkid.getSep() + "','" + newkid.getOct() + "','"
 					+ newkid.getNov() + "','" + newkid.getDec() + "','"
-					+ newkid.getpaydate() + "')";// ½«newkidÖĞÊı¾İ²åÈëµ½±ítb_kidmanager,ĞÂÔöÒ»Ïî£¡£¡£¡
+					+ newkid.getpaydate() + "')";// å°†newkidä¸­æ•°æ®æ’å…¥åˆ°è¡¨tb_kidmanager,æ–°å¢ä¸€é¡¹ï¼ï¼ï¼
 
 			Statement stmt = conn.createStatement();
 			int i = stmt.executeUpdate(sql);
-			if (i > 0)// ÅĞ¶Ï²åÈëÊÇ·ñ³É¹¦
+			if (i > 0)// åˆ¤æ–­æ’å…¥æ˜¯å¦æˆåŠŸ
 			{
 				result = true;
-				System.out.println("Êı¾İ¿â²åÈëĞÂ¼ÇÂ¼³É¹¦³É¹¦");
+				System.out.println("æ•°æ®åº“æ’å…¥æ–°è®°å½•æˆåŠŸæˆåŠŸ");
 			}
 
 		} catch (SQLException e)
@@ -160,7 +160,7 @@ public class Dao
 		return result;
 	}
 
-	// É¾³ıÖ¸¶¨idÌõÄ¿,³É¹¦·µ»Øtrue
+	// åˆ é™¤æŒ‡å®šidæ¡ç›®,æˆåŠŸè¿”å›true
 	public static boolean deleteid(int deleid)
 	{
 		boolean result = false;
@@ -171,10 +171,10 @@ public class Dao
 			prestat.setInt(1, deleid);
 			int de = prestat.executeUpdate();
 
-			if (de > 0) // ÅĞ¶ÏÉ¾³ıÊÇ·ñ³É¹¦
+			if (de > 0) // åˆ¤æ–­åˆ é™¤æ˜¯å¦æˆåŠŸ
 			{
 				result = true;
-				System.out.println("Êı¾İ¿âÉ¾³ı" + deleid + "³É¹¦");
+				System.out.println("æ•°æ®åº“åˆ é™¤" + deleid + "æˆåŠŸ");
 			}
 
 		} catch (Exception e)
@@ -184,7 +184,7 @@ public class Dao
 		return result;
 	}
 
-	// ¸üĞÂ´óÓÚidµÄÌõÄ¿µÄid×Ô¼õ1,³É¹¦·µ»Øtrue
+	// æ›´æ–°å¤§äºidçš„æ¡ç›®çš„idè‡ªå‡1,æˆåŠŸè¿”å›true
 	public static boolean updateid(int upid)
 	{
 		boolean result = false;
@@ -195,9 +195,9 @@ public class Dao
 			prestat.setInt(1, upid);
 			int up = prestat.executeUpdate();
 
-			if (up >= 0)// ÅĞ¶Ï¸üĞÂ²Ù×÷ÊÇ·ñ³É¹¦
+			if (up >= 0)// åˆ¤æ–­æ›´æ–°æ“ä½œæ˜¯å¦æˆåŠŸ
 			{
-				System.out.println("¸üĞÂÊı¾İ¿âid³É¹¦");
+				System.out.println("æ›´æ–°æ•°æ®åº“idæˆåŠŸ");
 				result = true;
 			}
 		} catch (Exception e)
@@ -207,7 +207,7 @@ public class Dao
 		return result;
 	}
 
-	// ¸üĞÂÖ¸¶¨idµÄpaydate×Ö¶Î,³É¹¦·µ»Øtrue
+	// æ›´æ–°æŒ‡å®šidçš„paydateå­—æ®µ,æˆåŠŸè¿”å›true
 	public static boolean updateinfostr(int id, String value)
 	{
 		boolean result = false;
@@ -222,7 +222,7 @@ public class Dao
 			if (ups > 0)
 			{
 				result = true;
-				System.out.println("¸üĞÂÊı¾İ¿â½»·ÑÈÕÆÚ³É¹¦");
+				System.out.println("æ›´æ–°æ•°æ®åº“äº¤è´¹æ—¥æœŸæˆåŠŸ");
 			}
 
 		} catch (Exception e)
@@ -234,14 +234,14 @@ public class Dao
 
 	}
 
-	// ¸üĞÂidµÄ Ä³¸öÔÂ·İÎª1,¸üĞÂ³É¹¦·µ»Øture
+	// æ›´æ–°idçš„ æŸä¸ªæœˆä»½ä¸º1,æ›´æ–°æˆåŠŸè¿”å›ture
 	public static boolean updateinfomon(int id, int month , int value)
 	{
 		boolean result = false;
 		try
 		{
 			String sql = "";
-			System.out.println("½»·ÑµÄÔÂ·İ£º"+month);
+			System.out.println("äº¤è´¹çš„æœˆä»½ï¼š"+month);
 			switch (month)
 			{
 			case 1:
@@ -285,7 +285,7 @@ public class Dao
 			default:
 				break;
 			}
-			PreparedStatement prestat = conn.prepareStatement(sql);// Ğ´·¨ÓĞÎÊÌâ
+			PreparedStatement prestat = conn.prepareStatement(sql);// å†™æ³•æœ‰é—®é¢˜
 			prestat.setInt(1, value);
 			prestat.setInt(2, id);
 
@@ -293,10 +293,10 @@ public class Dao
 			if (ups > 0)
 			{
 				result = true;
-				System.out.println("¸üĞÂÊı¾İ¿âÖ¸¶¨ÔÂ·İÉèÖÃÎª½»·Ñ³É¹¦");
+				System.out.println("æ›´æ–°æ•°æ®åº“æŒ‡å®šæœˆä»½è®¾ç½®ä¸ºäº¤è´¹æˆåŠŸ");
 			}else {
-				JOptionPane.showMessageDialog(null, "Êı¾İ¿â¸üĞÂÊ§°Ü",
-						"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "æ•°æ®åº“æ›´æ–°å¤±è´¥",
+						"è­¦å‘Šæç¤ºçª—", JOptionPane.WARNING_MESSAGE);
 			}
 
 		} catch (Exception e)
@@ -339,7 +339,7 @@ public class Dao
 	//
 	//
 	//
-	// // Ìí¼ÓÓÃ»§
+	// // æ·»åŠ ç”¨æˆ·
 	// public static int addUser(TbUserlist ul)
 	// {
 	// return update("insert tb_userlist values('" + ul.getUsername() + "','" +
@@ -349,7 +349,7 @@ public class Dao
 	//
 	//
 	//
-	// // ĞŞ¸ÄÓÃ»§·½·¨
+	// // ä¿®æ”¹ç”¨æˆ·æ–¹æ³•
 	// public static int updateUser(TbUserlist user)
 	// {
 	// return update("update tb_userlist set username='" + user.getUsername() +

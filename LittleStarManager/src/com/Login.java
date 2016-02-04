@@ -56,20 +56,20 @@ public class Login extends JFrame
 
 	public Login()
 	{
-		setTitle("µÇÂ¼Ğ¡ĞÇĞÇÓ×¶ùÔ°ĞÅÏ¢¹ÜÀíÏµÍ³");
+		setTitle("ç™»å½•å°æ˜Ÿæ˜Ÿå¹¼å„¿å›­ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
 		final JPanel panel = new LoginPanel();
 		panel.setLayout(null);
 		getContentPane().add(panel);
 		setBounds(300, 200, panel.getWidth(), panel.getHeight());
 		userLabel = new JLabel();
-		userLabel.setText("ÓÃ»§Ãû£º");
+		userLabel.setText("ç”¨æˆ·åï¼š");
 		userLabel.setBounds(100, 135, 200, 18);
 		panel.add(userLabel);
 		final JTextField userName = new JTextField();
 		userName.setBounds(150, 135, 200, 18);
 		panel.add(userName);
 		passLabel = new JLabel();
-		passLabel.setText("ÃÜ  Âë£º");
+		passLabel.setText("å¯†  ç ï¼š");
 		passLabel.setBounds(100, 165, 200, 18);
 		panel.add(passLabel);
 		final JPasswordField userPassword = new JPasswordField();
@@ -90,7 +90,7 @@ public class Login extends JFrame
 			{
 				if (Dao.conn == null)
 				{
-					JOptionPane.showMessageDialog(null, "Êı¾İ¿âÁ¬½ÓÒì³£", "¾¯¸æÌáÊ¾´°",
+					JOptionPane.showMessageDialog(null, "æ•°æ®åº“è¿æ¥å¼‚å¸¸", "è­¦å‘Šæç¤ºçª—",
 							JOptionPane.WARNING_MESSAGE);
 				} else
 				{
@@ -100,7 +100,7 @@ public class Login extends JFrame
 					{
 						userName.setText(null);
 						userPassword.setText(null);
-						JOptionPane.showMessageDialog(null, "µÇÂ¼ĞÅÏ¢ÓĞÎó", "¾¯¸æÌáÊ¾´°",
+						JOptionPane.showMessageDialog(null, "ç™»å½•ä¿¡æ¯æœ‰è¯¯", "è­¦å‘Šæç¤ºçª—",
 								JOptionPane.WARNING_MESSAGE);
 						return;
 					}
@@ -109,7 +109,7 @@ public class Login extends JFrame
 				}
 			}
 		});
-		login.setText("µÇÂ¼");
+		login.setText("ç™»å½•");
 		login.setBounds(180, 195, 60, 18);
 		panel.add(login);
 		exit = new JButton();
@@ -120,7 +120,7 @@ public class Login extends JFrame
 				System.exit(0);
 			}
 		});
-		exit.setText("ÍË³ö");
+		exit.setText("é€€å‡º");
 		exit.setBounds(260, 195, 60, 18);
 		panel.add(exit);
 		setVisible(true);

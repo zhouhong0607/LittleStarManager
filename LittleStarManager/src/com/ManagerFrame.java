@@ -32,7 +32,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import com.mysql.jdbc.StringUtils;
+
 
 public class ManagerFrame extends JFrame
 {
@@ -42,8 +42,8 @@ public class ManagerFrame extends JFrame
 	private JTextField phoneTF;
 	private JTextField paydateTF;
 	private JTextField dayoffTF;
-	Vector<TbKidmanager> kidlist;// ÓÃÓÚ³õ´Îµ¼ÈëÊý¾Ý¹¹Ôìtablemodel,Ö®ºóÓÉtableModel½øÐÐÊý¾Ý¸üÐÂ£¬ÓëÊý¾Ý¿âÁ¬½Ó½»»¥
-	DefaultTableModel tableModel = null;// ±í¸ñÄ£ÐÍ
+	Vector<TbKidmanager> kidlist;// ï¿½ï¿½ï¿½Ú³ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½tablemodel,Ö®ï¿½ï¿½ï¿½ï¿½tableModelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½
+	DefaultTableModel tableModel = null;// ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 	MTable table = null;
 
 	/**
@@ -52,25 +52,25 @@ public class ManagerFrame extends JFrame
 	public ManagerFrame()
 	{
 		super();
-		setTitle("ÐÅÏ¢¹ÜÀí");
+		setTitle("ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setBounds(0, 0, screenSize.width, screenSize.height - 60);// ÉèÖÃÈ«ÆÁÏÔÊ¾
-		// ¹ö¶¯Ãæ°å
+		this.setBounds(0, 0, screenSize.width, screenSize.height - 60);// ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½Ê¾
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		final JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
-		// °´Å¥Ãæ°å
+		// ï¿½ï¿½Å¥ï¿½ï¿½ï¿½
 		final JPanel buttonPanel = new JPanel();
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-		// Ìí¼ÓÒ»ÐÐ
-		JButton inserbutton = new JButton("Ìí¼Ó");
+		// ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+		JButton inserbutton = new JButton("ï¿½ï¿½ï¿½");
 		inserbutton.addActionListener(new ActionListener()
 		{
 
 			@Override
-			public void actionPerformed(ActionEvent e)// Ö´ÐÐÌí¼Ó²Ù×÷£¬±í¸ñÌí¼ÓÒ»Ìõ£¬kidlistÌí¼Ó£¬Êý¾Ý¿âÌí¼ÓÒ»Ìõ
+			public void actionPerformed(ActionEvent e)// Ö´ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½kidlistï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 			{
-				// ±í¸ñÌí¼Ó
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				// TODO Auto-generated method stub
 				if (nameTF.getText() != "" && TFDateFormat(indateTF.getText())
 						&& TFDateFormat(birdateTF.getText())
@@ -94,49 +94,49 @@ public class ManagerFrame extends JFrame
 					newkid.setOct(0);
 					newkid.setNov(0);
 					newkid.setDec(0);
-					// »ñÈ¡½»·ÑÈÕÆÚ +Ò»¸öÔÂ
+					// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ +Ò»ï¿½ï¿½ï¿½ï¿½
 					String paydates = AddOneMonth(paydateTF.getText());
 					newkid.setpaydate(paydates);
 
-					int month = getmonth(paydateTF.getText());// »ñÈ¡ÒÑ½»·ÑÔÂ·Ý
-					newkid.setMonth(month);// ÉèÖÃ¸ÃÔÂ·Ý¶ÔÓ¦ÖµÎª1
-					if (Dao.inserttodb(newkid))// ²åÈëÊý¾Ý¿â,³É¹¦µÄ»°²åÈëµ½tableºÍkidlist
+					int month = getmonth(paydateTF.getText());// ï¿½ï¿½È¡ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+					newkid.setMonth(month);// ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½Â·Ý¶ï¿½Ó¦ÖµÎª1
+					if (Dao.inserttodb(newkid))// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½,ï¿½É¹ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ëµ½tableï¿½ï¿½kidlist
 					{
-						JOptionPane.showMessageDialog(null, "ÐÂ¼ÇÂ¼ÒÑ³É¹¦Ìí¼Óµ½Êý¾Ý¿â",
-								"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ï¿½Â¼ï¿½Â¼ï¿½Ñ³É¹ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½",
+								"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½", JOptionPane.WARNING_MESSAGE);
 						Vector<String> rowvector = new Vector<>();
 						rowvector.add(newkid.getid().toString());
 						rowvector.add(newkid.getkidname());
 						rowvector.add(newkid.getindate());
 						rowvector.add(newkid.getbirdate());
 						rowvector.add(newkid.getphone());
-						rowvector.add(newkid.getJan() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getFeb() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getMar() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getApr() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getMay() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getJun() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getJul() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getAug() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getSep() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getOct() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getNov() == 0 ? "Î´½»" : "ÒÑ½»");
-						rowvector.add(newkid.getDec() == 0 ? "Î´½»" : "ÒÑ½»");
+						rowvector.add(newkid.getJan() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getFeb() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getMar() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getApr() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getMay() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getJun() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getJul() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getAug() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getSep() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getOct() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getNov() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
+						rowvector.add(newkid.getDec() == 0 ? "Î´ï¿½ï¿½" : "ï¿½Ñ½ï¿½");
 						rowvector.add(newkid.getpaydate());
-						// tablemodelÌí¼Ó
+						// tablemodelï¿½ï¿½ï¿½
 						tableModel.addRow(rowvector);
 					}
 				} else
 				{
 					JOptionPane.showMessageDialog(null,
-							"Çë¼ì²éÃû×ÖÊÇ·ñÊäÈë,ÈÕÆÚ¸ñÊ½ÊÇ·ñÕýÈ·,½»·ÑµÄÈÕÆÚÊÇ·ñÊäÈë", "¾¯¸æÌáÊ¾´°",
+							"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½Ç·ï¿½ï¿½ï¿½È·,ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
 
-		// É¾³ýÒ»ÐÐ,ÅÐ¶ÏÊÇ·ñÎªÒ»¸öÊý¾Ý,Ê×ÏÈ¸ù¾ÝÑ¡ÔñË÷Òý»ñµÃkidlistÖÐµÄÖ¸¶¨ÔªËØdeletekid,Êý¾Ý¿âÉ¾³ýdeletekid,kidlistÖÐÉ¾³ý¸ÃÏî,±í¸ñÖÐÉ¾³ýdeletekid,½ÓÏÂÀ´ÐÞ¸Äid,Ê×ÏÈÊý¾Ý¿âÖÐ¸ÃÎ»ÖÃÖ®ºóËùÓÐµÄid-1,kidlistÖÐid-1,±í¸ñid-1.
-		JButton deletebutton = new JButton("É¾³ý");
+		// É¾ï¿½ï¿½Ò»ï¿½ï¿½,ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½kidlistï¿½Ðµï¿½Ö¸ï¿½ï¿½Ôªï¿½ï¿½deletekid,ï¿½ï¿½ï¿½Ý¿ï¿½É¾ï¿½ï¿½deletekid,kidlistï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½deletekid,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½id,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð¸ï¿½Î»ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½id-1,kidlistï¿½ï¿½id-1,ï¿½ï¿½ï¿½id-1.
+		JButton deletebutton = new JButton("É¾ï¿½ï¿½");
 		deletebutton.addActionListener(new ActionListener()
 		{
 			@Override
@@ -145,18 +145,18 @@ public class ManagerFrame extends JFrame
 				// TODO Auto-generated method stub
 				int selectedRow = table.getSelectedRow();
 				int deleteid = Integer.parseInt(tableModel.getValueAt(
-						selectedRow, 0).toString());// ·µ»ØÉ¾³ýÏîµÄid,intÐÍ±íÊ¾
+						selectedRow, 0).toString());// ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½id,intï¿½Í±ï¿½Ê¾
 				if (selectedRow == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Î´Ñ¡ÔñÈÎºÎÒ»ÐÐ", "¾¯¸æÌáÊ¾´°",
+					JOptionPane.showMessageDialog(null, "Î´Ñ¡ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 							JOptionPane.WARNING_MESSAGE);
-					// Ã»ÓÐÑ¡ÔñÈÎºÎÒ»ÐÐ
+					// Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½
 				} else
 				{
 					if (Dao.deleteid(deleteid) && Dao.updateid(deleteid))
 					{
-						// Èç¹ûÊý¾Ý¿âÉ¾³ý£¬¸üÐÂid³É¹¦£¬ÔòÖ´ÐÐ¸üÐÂtablemodelµÄ>deletedidµÄid,²¢ÇÒÉ¾³ýÕâÒ»Ìõ
-						JOptionPane.showMessageDialog(null, "É¾³ý³É¹¦£¡", "¾¯¸æÌáÊ¾´°",
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¸ï¿½ï¿½ï¿½tablemodelï¿½ï¿½>deletedidï¿½ï¿½id,ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+						JOptionPane.showMessageDialog(null, "É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 								JOptionPane.WARNING_MESSAGE);
 
 						for (int i = 0; i < table.getRowCount(); i++)
@@ -165,9 +165,9 @@ public class ManagerFrame extends JFrame
 									.toString()) > deleteid)
 								tableModel.setValueAt(
 										Integer.parseInt(tableModel.getValueAt(
-												i, 0).toString()) - 1, i, 0);// ¸üÐÂid-1
+												i, 0).toString()) - 1, i, 0);// ï¿½ï¿½ï¿½ï¿½id-1
 						}
-						tableModel.removeRow(selectedRow);// É¾³ý¸ÃÐÐ
+						tableModel.removeRow(selectedRow);// É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					}
 				}
 			}
@@ -192,15 +192,15 @@ public class ManagerFrame extends JFrame
 		phoneTF = new JTextField();
 		buttonPanel.add(phoneTF);
 		phoneTF.setColumns(10);
-		JLabel paydateLB = new JLabel("½É·ÑÈÕÆÚ");
+		JLabel paydateLB = new JLabel("ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½");
 		buttonPanel.add(paydateLB);
 		paydateTF = new JTextField();
 		buttonPanel.add(paydateTF);
 		paydateTF.setColumns(10);
 		buttonPanel.add(inserbutton);
 		buttonPanel.add(deletebutton);
-		// ½É·Ñ°´Å¥,
-		JButton setpaid = new JButton("½»·Ñ");
+		// ï¿½É·Ñ°ï¿½Å¥,
+		JButton setpaid = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		setpaid.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
@@ -209,42 +209,42 @@ public class ManagerFrame extends JFrame
 				int selectedRow = table.getSelectedRow();
 				if (selectedRow == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Î´Ñ¡ÔñÈÎºÎÒ»ÐÐ", "¾¯¸æÌáÊ¾´°",
+					JOptionPane.showMessageDialog(null, "Î´Ñ¡ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 							JOptionPane.WARNING_MESSAGE);
-					// Ã»ÓÐÑ¡ÔñÈÎºÎÒ»ÐÐ
+					// Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½
 				} else
-				// ¸üÐÂ½»·ÑÈÕÆÚ+1ÔÂ
+				// ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+1ï¿½ï¿½
 				{
 					int selectedid = Integer.parseInt(tableModel.getValueAt(
-							selectedRow, 0).toString());// »ñµÃÑ¡ÖÐÐÐµÄid
+							selectedRow, 0).toString());// ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ðµï¿½id
 					String update = tableModel.getValueAt(selectedRow, 17)
 							.toString();
-					int changemonth = getmonth(update);// »ñÈ¡½»·ÑµÄÔÂ·Ý
-					update = AddOneMonth(update);// Ôö¼ÓÒ»¸öÔÂ
-					// ¸üÐÂpaydate²¿·ÖÐÅÏ¢ÓëÔÂ·ÝÐÅÏ¢
+					int changemonth = getmonth(update);// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ñµï¿½ï¿½Â·ï¿½
+					update = AddOneMonth(update);// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+					// ï¿½ï¿½ï¿½ï¿½paydateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½Ï¢
 					if (Dao.updateinfostr(selectedid, update)
-							&& Dao.updateinfomon(selectedid, changemonth,1))// ¸üÐÂµ½Êý¾Ý¿â   
+							&& Dao.updateinfomon(selectedid, changemonth,1))// ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½   
 					{
-						JOptionPane.showMessageDialog(null, "½»·Ñ³É¹¦,Êý¾Ý¿âidÒÑ¸üÐÂ",
-								"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
-						tableModel.setValueAt(update, selectedRow, 17);// ¸üÐÂ±í¸ñµÄ½É·ÑÈÕÆÚ
+						JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½Ñ³É¹ï¿½,ï¿½ï¿½ï¿½Ý¿ï¿½idï¿½Ñ¸ï¿½ï¿½ï¿½",
+								"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½", JOptionPane.WARNING_MESSAGE);
+						tableModel.setValueAt(update, selectedRow, 17);// ï¿½ï¿½ï¿½Â±ï¿½ï¿½Ä½É·ï¿½ï¿½ï¿½ï¿½ï¿½
 						paydateTF.setText(tableModel
-								.getValueAt(selectedRow, 17)// ¸üÐÂ±à¼­¿òµÄ½É·ÑÈÕÆÚ
-								.toString());// ¸üÐÂpaydate±à¼­¿ò
-						tableModel.setValueAt("ÒÑ½»", selectedRow,
-								changemonth + 4);// ÉèÖÃ¶ÔÓ¦ÔÂ·ÝÎªÒÑ½»
+								.getValueAt(selectedRow, 17)// ï¿½ï¿½ï¿½Â±à¼­ï¿½ï¿½Ä½É·ï¿½ï¿½ï¿½ï¿½ï¿½
+								.toString());// ï¿½ï¿½ï¿½ï¿½paydateï¿½à¼­ï¿½ï¿½
+						tableModel.setValueAt("ï¿½Ñ½ï¿½", selectedRow,
+								changemonth + 4);// ï¿½ï¿½ï¿½Ã¶ï¿½Ó¦ï¿½Â·ï¿½Îªï¿½Ñ½ï¿½
 					}
-					if(changemonth==12)//ÐÂµÄÒ»Äê¸üÐÂ¶ÔÓ¦ÔÂ·ÝÎªÎ´½»
+					if(changemonth==12)//ï¿½Âµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¶ï¿½Ó¦ï¿½Â·ï¿½ÎªÎ´ï¿½ï¿½
 					{
-						JOptionPane.showMessageDialog(null, "ÐÂµÄÒ»Äê£¬¸üÐÂÊý¾Ýing",
-								"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ï¿½Âµï¿½Ò»ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ing",
+								"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½", JOptionPane.WARNING_MESSAGE);
 						for(int k=1;k<=12;k++)
 						{
-							boolean ok=Dao.updateinfomon(selectedid, k,0);//Èç¹ûÊý¾Ý¿â¸üÐÂ³É¹¦£¬¸üÐÂ±í¸ñ
+							boolean ok=Dao.updateinfomon(selectedid, k,0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Â³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ï¿½
 							if(ok)
 							{
-								tableModel.setValueAt("Î´½»", selectedRow,
-										k + 4);// ÉèÖÃËùÓÐÔÂ·ÝÎªÎ´½»
+								tableModel.setValueAt("Î´ï¿½ï¿½", selectedRow,
+										k + 4);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ÎªÎ´ï¿½ï¿½
 							}
 						}
 					}
@@ -252,81 +252,81 @@ public class ManagerFrame extends JFrame
 				}
 			}
 		});
-		JLabel dayoffLB = new JLabel("Çë¼ÙÌìÊý:");
+		JLabel dayoffLB = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:");
 		buttonPanel.add(dayoffLB);
 		dayoffTF = new JTextField();
 		buttonPanel.add(dayoffTF);
 		dayoffTF.setColumns(5);
-		JButton dayoffBT = new JButton("Çë¼Ù");
+		JButton dayoffBT = new JButton("ï¿½ï¿½ï¿½");
 		dayoffBT.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
 				// TODO Auto-generated method stub
 				int selectedRow = table.getSelectedRow();
-				if (selectedRow == -1)// Ê¹ÓÃÕýÔò±í´ïÊ½ÅÐ¶ÏÊÇ·ñÎªÕýÕûÊý
+				if (selectedRow == -1)// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				{
-					JOptionPane.showMessageDialog(null, "°ÝÍÐ,ÇëÏÈÑ¡¸öÈË£¡£¡", "¾¯¸æÌáÊ¾´°",
+					JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 							JOptionPane.WARNING_MESSAGE);
-					// Ã»ÓÐÑ¡ÔñÈÎºÎÒ»ÐÐ
+					// Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Îºï¿½Ò»ï¿½ï¿½
 				} else if (!isNumeric(dayoffTF.getText()))
 				{
-					JOptionPane.showMessageDialog(null, "°ÝÍÐ,ÇëÊäÈëÕýÕûÊý", "¾¯¸æÌáÊ¾´°",
+					JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½",
 							JOptionPane.WARNING_MESSAGE);
 				} else if (Integer.parseInt(dayoffTF.getText()) == 0)
 				{
-					JOptionPane.showMessageDialog(null, "°ÝÍÐ,Çë¼Ù0ÌìÓÐÒâÒåÃ´ - -£¡",
-							"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ - -ï¿½ï¿½",
+							"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½", JOptionPane.WARNING_MESSAGE);
 				} else
 				{
-					int daynum = Integer.parseInt(dayoffTF.getText());// ½«Çë¼ÙÌìÊý×ª»¯ÎªintÐÍ
+					int daynum = Integer.parseInt(dayoffTF.getText());// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªintï¿½ï¿½
 					int selectedid = Integer.parseInt(tableModel.getValueAt(
-							selectedRow, 0).toString());// »ñµÃÑ¡ÖÐÐÐµÄid
-					String update = tableModel.getValueAt(selectedRow, 17)// »ñµÃÔ­À´½»·ÑµÄÈÕÆÚ
+							selectedRow, 0).toString());// ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ðµï¿½id
+					String update = tableModel.getValueAt(selectedRow, 17)// ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½
 							.toString();
-					update = AddDay(update, daynum);// ¸üÐÂ½»·ÑµÄÈÕÆÚ,¼ÓÉÏÇë¼ÙµÄÌìÊý
-					// ¸üÐÂpaydate²¿·ÖÐÅÏ¢
+					update = AddDay(update, daynum);// ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½ï¿½ï¿½
+					// ï¿½ï¿½ï¿½ï¿½paydateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 					if (Dao.updateinfostr(selectedid, update))
-						;// ¸üÐÂµ½Êý¾Ý¿â
+						;// ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 					{
-						JOptionPane.showMessageDialog(null, "Çë¼Ù³É¹¦,Êý¾Ý¿âÒÑ¸üÐÂ",
-								"¾¯¸æÌáÊ¾´°", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ï¿½ï¿½Ù³É¹ï¿½,ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½",
+								"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½", JOptionPane.WARNING_MESSAGE);
 						// kidlist.elementAt(selectedRow).setpaydate(update);
 						tableModel.setValueAt(update, selectedRow, 17);
 						paydateTF.setText(tableModel
-								.getValueAt(selectedRow, 17).toString());// ¸üÐÂpaydate±à¼­¿ò
+								.getValueAt(selectedRow, 17).toString());// ï¿½ï¿½ï¿½ï¿½paydateï¿½à¼­ï¿½ï¿½
 					}
 				}
 			}
 		});
 		buttonPanel.add(dayoffBT);
 		buttonPanel.add(setpaid);
-		// ÁÐÃûÏòÁ¿
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Vector<String> columnNameV = new Vector<>();
 		columnNameV.add("ID");
-		columnNameV.add("ÐÕÃû");
-		columnNameV.add("ÈëÔ°ÈÕÆÚ");
-		columnNameV.add("³öÉúÈÕÆÚ");
-		columnNameV.add("ÁªÏµ·½Ê½");
-		columnNameV.add("Ò»ÔÂ");
-		columnNameV.add("¶þÔÂ");
-		columnNameV.add("ÈýÔÂ");
-		columnNameV.add("ËÄÔÂ");
-		columnNameV.add("ÎåÔÂ");
-		columnNameV.add("ÁùÔÂ");
-		columnNameV.add("ÆßÔÂ");
-		columnNameV.add("°ËÔÂ");
-		columnNameV.add("¾ÅÔÂ");
-		columnNameV.add("Ê®ÔÂ");
-		columnNameV.add("Ê®Ò»ÔÂ");
-		columnNameV.add("Ê®¶þÔÂ");
-		columnNameV.add("ÏÂ´Î½»·ÑÈÕÆÚ");
-		// ÐÅÏ¢ÏòÁ¿,ÓÉÊý¾Ý¿âµ¼Èëµ½kidlistÖÐ
-		kidlist = Dao.getTbKidmanager(); // ÐÞ¸ÄÊý¾ÝÐÞ¸Äkidlist£¬kidlistÊý¾Ý²»ÎªString
-		// System.out.println("kidlist´óÐ¡£º" + kidlist.size());
-		// ±íÊý¾ÝÏòÁ¿
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½Ïµï¿½ï¿½Ê½");
+		columnNameV.add("Ò»ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("Ê®ï¿½ï¿½");
+		columnNameV.add("Ê®Ò»ï¿½ï¿½");
+		columnNameV.add("Ê®ï¿½ï¿½ï¿½ï¿½");
+		columnNameV.add("ï¿½Â´Î½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		// ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿âµ¼ï¿½ëµ½kidlistï¿½ï¿½
+		kidlist = Dao.getTbKidmanager(); // ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½kidlistï¿½ï¿½kidlistï¿½ï¿½ï¿½Ý²ï¿½ÎªString
+		// System.out.println("kidlistï¿½ï¿½Ð¡ï¿½ï¿½" + kidlist.size());
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Vector<Vector<String>> tableValueV = new Vector<>();
-		for (int row = 0; row < kidlist.size(); row++)// ½«kidlistÖÐÊý¾Ý±äÎªSting¸³Öµ¸øÊý¾ÝÏòÁ¿tableValueV
+		for (int row = 0; row < kidlist.size(); row++)// ï¿½ï¿½kidlistï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ÎªStingï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tableValueV
 		{
 			Vector<String> rowV = new Vector<>();
 			rowV.add(kidlist.elementAt(row).getid().toString());
@@ -334,26 +334,26 @@ public class ManagerFrame extends JFrame
 			rowV.add(kidlist.elementAt(row).getindate());
 			rowV.add(kidlist.elementAt(row).getbirdate());
 			rowV.add(kidlist.elementAt(row).getphone());
-			rowV.add(kidlist.elementAt(row).getJan() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getFeb() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getMar() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getApr() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getMay() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getJun() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getJul() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getAug() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getSep() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getOct() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getNov() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getDec() == 1 ? "ÒÑ½»" : "Î´½»");
-			rowV.add(kidlist.elementAt(row).getpaydate());// ½«kidlistÐÂÔöÏî¼ÓÈëµ½tablemodelÖÐ
+			rowV.add(kidlist.elementAt(row).getJan() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getFeb() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getMar() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getApr() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getMay() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getJun() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getJul() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getAug() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getSep() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getOct() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getNov() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getDec() == 1 ? "ï¿½Ñ½ï¿½" : "Î´ï¿½ï¿½");
+			rowV.add(kidlist.elementAt(row).getpaydate());// ï¿½ï¿½kidlistï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ½tablemodelï¿½ï¿½
 			tableValueV.add(rowV);
 		}
-		tableModel = new DefaultTableModel(tableValueV, columnNameV);// ±í¸çÄ£ÐÍ
+		tableModel = new DefaultTableModel(tableValueV, columnNameV);// ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 		table = new MTable(tableModel);
-		// µ¥Ôª¸ñÑÕÉ«µÄ¸Ä±ä
+		// ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½É«ï¿½Ä¸Ä±ï¿½
 		table.setDefaultRenderer(Object.class, new MuRender());
-		// ÉèÖÃÊó±ê¼àÌý£¬½«ÐÅÏ¢Õ¹Ê¾µ½ÏÂÃæ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Õ¹Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		table.addMouseListener(new MouseListener()
 		{
 			@Override
@@ -387,8 +387,8 @@ public class ManagerFrame extends JFrame
 			public void mouseClicked(MouseEvent arg0)
 			{
 				// TODO Auto-generated method stub
-				int selectedRow = table.getSelectedRow(); // ÅÅÐòµÄ¹ý³ÌÖÐtableË³Ðò¸Ä±ä,tablemodelµÄË³Ðò²»±ä
-				Object selectedname = table.getValueAt(selectedRow, 1);// »ñÈ¡Ñ¡ÖÐµ¥Ôª¸ñµÄÖµ
+				int selectedRow = table.getSelectedRow(); // ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½tableË³ï¿½ï¿½Ä±ï¿½,tablemodelï¿½ï¿½Ë³ï¿½ò²»±ï¿½
+				Object selectedname = table.getValueAt(selectedRow, 1);// ï¿½ï¿½È¡Ñ¡ï¿½Ðµï¿½Ôªï¿½ï¿½ï¿½Öµ
 				Object indate = table.getValueAt(selectedRow, 2);
 				Object birdate = table.getValueAt(selectedRow, 3);
 				Object phone = table.getValueAt(selectedRow, 4);
@@ -401,17 +401,17 @@ public class ManagerFrame extends JFrame
 
 			}
 		});
-		// ÉèÖÃ±í¸ñÅÅÐòÆ÷ ÔÝÊ±²»¿ª·Å´Ë¹¦ÄÜ£¬Ó°Ïìid,Ó°ÏìÊý¾Ý¿â, ÐÂ°ì·¨£º±í¸ñÐÂÔöÒ»Ìõ
-		// ¼ÆÊýNumber,É¾³ýµÄÊ±ºòÖ»¸üÐÂ±í¸ñ´óÓÚÑ¡ÔñÐÐµÄNumber, idÎªÑ§ÉúµÄÑ§ºÅ
-		// Êý¾Ý¿â²Ù×÷¸ù¾ÝÑ§ºÅ±ä»¯,Êý¾Ý¿âÉ¾³ý²Ù×÷²»ÔÙ¸üÐÂid,kidlistÓëÊý¾Ý¿â±£³ÖÍ¬²½
+		// ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Å´Ë¹ï¿½ï¿½Ü£ï¿½Ó°ï¿½ï¿½id,Ó°ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½, ï¿½Â°ì·¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½Number,É¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ö»ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ðµï¿½Number, idÎªÑ§ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+		// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½Å±ä»¯,ï¿½ï¿½ï¿½Ý¿ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½id,kidlistï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â±£ï¿½ï¿½Í¬ï¿½ï¿½
 		table.setRowSorter(new TableRowSorter<>(tableModel));
 
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);// ÉèÖÃ±í¸ñµÄ×Ô¶¯µ÷ÕûÄ£Ê½
-		// table.setRowHeight(33);// ÉèÖÃÐÐ¸ß,Ä¬ÈÏ16ÏñËØ
-		// table.setRowSelectionAllowed(false);// ÉèÖÃÊÇ·ñÔÊÐíÑ¡ÖÐ±í¸ñÐÐ£¬Ä¬ÈÏÔÊÐí
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);// ÉèÖÃÑ¡Ôñ±í¸ñÐÐµÄÑ¡ÔñÄ£Ê½,Ö»ÔÊÐíÑ¡ÔñÒ»ÐÐ
-		table.setSelectionBackground(Color.YELLOW);// ÉèÖÃÑ¡ÔñÐÐ±³¾°ÑÕÉ«
-		// table.setSelectionForeground(Color.cyan);// ÉèÖÃÑ¡ÔñÐÐÇ°¾°ÑÕÉ«(ÎÄ×Ö)
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);// ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+		// table.setRowHeight(33);// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½,Ä¬ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½
+		// table.setRowSelectionAllowed(false);// ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð±ï¿½ï¿½ï¿½Ð£ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);// ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ñ¡ï¿½ï¿½Ä£Ê½,Ö»ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½
+		table.setSelectionBackground(Color.YELLOW);// ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½É«
+		// table.setSelectionForeground(Color.cyan);// ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½É«(ï¿½ï¿½ï¿½ï¿½)
 
 		scrollPane.setViewportView(table);
 
@@ -431,12 +431,12 @@ public class ManagerFrame extends JFrame
 		return dt;
 	}
 
-	public boolean TFDateFormat(String s)// ÈÕÆÚÊäÈë¸ñÊ½ÅÐ¶Ï,²»°üÀ¨ ¿Õ
+	public boolean TFDateFormat(String s)// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ð¶ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	{
 		String checkValue = s;
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 		Date d = null;
-		if (checkValue != null && !checkValue.equals("")) // ÅÐ¶ÏÊÇ·ñÎª¿Õ
+		if (checkValue != null && !checkValue.equals("")) // ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
 		{
 			if (checkValue.split("/").length > 1)
 			{
@@ -456,7 +456,7 @@ public class ManagerFrame extends JFrame
 			System.out.println(d);
 		} catch (Exception e)
 		{
-			System.out.println("¸ñÊ½´íÎó");
+			System.out.println("ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½");
 
 		}
 		String eL = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))(\\s(((0?[0-9])|([1-2][0-9]))\\:([0-5]?[0-9])((\\s)|(\\:([0-5]?[0-9])))))?$";
@@ -465,23 +465,23 @@ public class ManagerFrame extends JFrame
 		boolean b = m.matches();
 		if (b)
 		{
-			System.out.println("¸ñÊ½ÕýÈ·");
+			System.out.println("ï¿½ï¿½Ê½ï¿½ï¿½È·");
 			return true;
 
 		} else
 		{
-			System.out.println("¸ñÊ½´íÎó");
+			System.out.println("ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½");
 			return false;
 
 		}
 
 	}
 
-	// Ôö¼ÓÒ»¸öÔÂ
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 	public String AddOneMonth(String sdate)
 	{
 		String trsdate = null;
-		DateFormat df1 = DateFormat.getDateInstance();// ÈÕÆÚ¸ñÊ½£¬¾«È·µ½ÈÕ
+		DateFormat df1 = DateFormat.getDateInstance();// ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½
 		Date dt = null;
 
 		try
@@ -501,11 +501,11 @@ public class ManagerFrame extends JFrame
 		return trsdate;
 	}
 
-	// Ôö¼ÓÇë¼ÙµÄÌìÊý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½ï¿½ï¿½
 	public String AddDay(String date, int day)
 	{
 		String trsdate = null;
-		DateFormat df1 = DateFormat.getDateInstance();// ÈÕÆÚ¸ñÊ½£¬¾«È·µ½ÈÕ
+		DateFormat df1 = DateFormat.getDateInstance();// ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½
 		Date dt = null;
 
 		try
@@ -525,17 +525,17 @@ public class ManagerFrame extends JFrame
 		return trsdate;
 	}
 
-	public int getmonth(String dates)// »ñÈ¡ÔÂ·Ý
+	public int getmonth(String dates)// ï¿½ï¿½È¡ï¿½Â·ï¿½
 	{
 		int getmon = 0;
-		DateFormat df1 = DateFormat.getDateInstance();// ÈÕÆÚ¸ñÊ½£¬¾«È·µ½ÈÕ
+		DateFormat df1 = DateFormat.getDateInstance();// ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½
 		Date dt = null;
 		try
 		{
 			dt = df1.parse(dates);
 			Calendar cdar = Calendar.getInstance();
 			cdar.setTime(dt);
-			getmon = cdar.get(Calendar.MONTH) + 1;// »ñÈ¡ÔÂ·Ý
+			getmon = cdar.get(Calendar.MONTH) + 1;// ï¿½ï¿½È¡ï¿½Â·ï¿½
 		} catch (ParseException e)
 		{
 			e.printStackTrace();

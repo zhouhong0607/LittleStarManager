@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class TbKidmanager
 {
-	private Integer id;// Ê¹ÓÃÕßµÄÃû×Ö
-	private String kidname;// µÇÂ¼Ãû
+	private Integer id;// ä½¿ç”¨è€…çš„åå­—
+	private String kidname;// ç™»å½•å
 	private String indate;
 	private String birdate;
 	private String phone;
@@ -21,9 +21,9 @@ public class TbKidmanager
 	private Integer Oct;
 	private Integer Nov;
 	private Integer Dec;
-	private String paydate;// ĞÂÔö½»·ÑÈÕÆÚ
+	private String paydate;// æ–°å¢äº¤è´¹æ—¥æœŸ
 
-	// idºÅ
+	// idå·
 	public Integer getid()
 	{
 		return id;
@@ -34,7 +34,7 @@ public class TbKidmanager
 		this.id = idd;
 	}
 
-	// ĞÕÃû
+	// å§“å
 	public String getkidname()
 	{
 		return kidname;
@@ -45,7 +45,7 @@ public class TbKidmanager
 		this.kidname = kidnamee;
 	}
 
-	// ÈëÔ°ÈÕÆÚ
+	// å…¥å›­æ—¥æœŸ
 	public String getindate()
 	{
 		return indate;
@@ -56,7 +56,7 @@ public class TbKidmanager
 		this.indate = indatee;
 	}
 
-	// ³öÉúÈÕÆÚ
+	// å‡ºç”Ÿæ—¥æœŸ
 	public String getbirdate()
 	{
 		return birdate;
@@ -67,7 +67,7 @@ public class TbKidmanager
 		this.birdate = birdatee;
 	}
 
-	// µç»°
+	// ç”µè¯
 	public String getphone()
 	{
 		return phone;
@@ -78,13 +78,13 @@ public class TbKidmanager
 		this.phone = phonee;
 	}
 
-	// Ò»ÔÂ
+	// ä¸€æœˆ
 	public Integer getJan()
 	{
 		return Jan;
 	}
 
-	// ÉèÖÃÄ³ÔÂ·İÒÑ½»
+	// è®¾ç½®æŸæœˆä»½å·²äº¤
 	public void setMonth(Integer mon)
 	{
 		switch (mon)
@@ -136,7 +136,7 @@ public class TbKidmanager
 		this.Jan = Jann;
 	}
 
-	// ¶şÔÂ
+	// äºŒæœˆ
 	public Integer getFeb()
 	{
 		return Feb;
@@ -147,7 +147,7 @@ public class TbKidmanager
 		this.Feb = Febb;
 	}
 
-	// ÈıÔÂ
+	// ä¸‰æœˆ
 	public Integer getMar()
 	{
 		return Mar;
@@ -158,7 +158,7 @@ public class TbKidmanager
 		this.Mar = Marr;
 	}
 
-	// ËÄÔÂ
+	// å››æœˆ
 	public Integer getApr()
 	{
 		return Apr;
@@ -169,7 +169,7 @@ public class TbKidmanager
 		this.Apr = Aprr;
 	}
 
-	// ÎåÔÂ
+	// äº”æœˆ
 	public Integer getMay()
 	{
 		return May;
@@ -180,7 +180,7 @@ public class TbKidmanager
 		this.May = Mayy;
 	}
 
-	// ÁùÔÂ
+	// å…­æœˆ
 	public Integer getJun()
 	{
 		return Jun;
@@ -191,7 +191,7 @@ public class TbKidmanager
 		this.Jun = Junn;
 	}
 
-	// ÆßÔÂ
+	// ä¸ƒæœˆ
 	public Integer getJul()
 	{
 		return Jul;
@@ -202,7 +202,7 @@ public class TbKidmanager
 		this.Jul = Jull;
 	}
 
-	// °ËÔÂ
+	// å…«æœˆ
 	public Integer getAug()
 	{
 		return Aug;
@@ -213,7 +213,7 @@ public class TbKidmanager
 		this.Aug = Augg;
 	}
 
-	// ¾ÅÔÂ
+	// ä¹æœˆ
 	public Integer getSep()
 	{
 		return Sep;
@@ -224,7 +224,7 @@ public class TbKidmanager
 		this.Sep = Sepp;
 	}
 
-	// Ê®ÔÂ
+	// åæœˆ
 	public Integer getOct()
 	{
 		return Oct;
@@ -235,7 +235,7 @@ public class TbKidmanager
 		this.Oct = Octt;
 	}
 
-	// Ê®Ò»ÔÂ
+	// åä¸€æœˆ
 	public Integer getNov()
 	{
 		return Nov;
@@ -246,7 +246,7 @@ public class TbKidmanager
 		this.Nov = Novv;
 	}
 
-	// Ê®¶şÔÂ
+	// åäºŒæœˆ
 	public Integer getDec()
 	{
 		return Dec;
